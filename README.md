@@ -12,6 +12,48 @@ hljs.registerLanguage('esql', esql);
 ```
 
 
+## Contributing
+
+First clone the main Highlight.js repository:
+
+```
+git clone https://github.com/highlightjs/highlight.js.git
+```
+
+Then clone this repo into the `extra/` directory:
+
+```
+cd extra
+git clone https://github.com/elastic/highlightjs-esql.git
+cd ..
+```
+
+Run build script:
+
+```
+npm i
+node ./tools/build.js -t node
+```
+
+Run CDN build:
+
+```
+node ./tools/build.js -t cdn
+```
+
+Run tests:
+
+```
+npm run test
+```
+
+Run only ES|QL language tests:
+
+```
+ONLY_EXTRA=true npm run test-markup
+```
+
+
 ## Releasing
 
 Run test and build steps:
