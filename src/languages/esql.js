@@ -23,11 +23,11 @@ function either(...args) {
 }
 
 export default function(hljs) {
-  const LITERALS = [
-    "true",
-    "false"
-  ];
-
+  const literals = ['TRUE', 'FALSE', 'NULL'];
+  const binaryNamedOperators = ['AND', 'OR', 'IS', 'IN', 'AS', 'LIKE', 'RLIKE', 'RLIKE'];
+  const otherNamedOperators = ['ASC', 'DESC', 'FIRST', 'LAST', 'NULLS'];
+  
+  const keywords = ['BY', 'ON', 'WITH', 'METADATA'];
   const commands = [
     'DISSECT',
     'DROP',
@@ -37,6 +37,7 @@ export default function(hljs) {
     'FROM',
     'FULL JOIN',
     'GROK',
+    'INFO',
     'INLINESTATS',
     'JOIN',
     'KEEP',
@@ -58,39 +59,152 @@ export default function(hljs) {
     'WHERE',
   ];
 
-  const BUILT_IN = [
-    "avg",
-  ];
-
   const OPERATOR = {
     className: "operator",
     match: /\|/
   };
 
-  const QUOTE_STRING = {
+  const STRING = {
     className: 'string',
     begin: /"/,
     end: /"/,
     contains: [ hljs.BACKSLASH_ESCAPE ]
   };
 
-  const FUNCTIONS = [
-    "abs",
-    "acos",
-    "acosh",
-    "asin",
-    "asinh",
-    "atan",
-    "atan2",
-    "atanh",
-    "case",
+  const functions = [
+    'ABS',
+    'ACOS',
+    'ASIN',
+    'ATAN',
+    'ATAN2',
+    'AVG',
+    'BIT_LENGTH',
+    'BUCKET',
+    'BYTE_LENGTH',
+    'CASE',
+    'CATEGORIZE',
+    'CBRT',
+    'CEIL',
+    'CIDR_MATCH',
+    'COALESCE',
+    'CONCAT',
+    'COS',
+    'COSH',
+    'COUNT_DISTINCT',
+    'COUNT',
+    'DATE_DIFF',
+    'DATE_EXTRACT',
+    'DATE_FORMAT',
+    'DATE_PARSE',
+    'DATE_TRUNC',
+    'E',
+    'ENDS_WITH',
+    'EXP',
+    'FLOOR',
+    'FROM_BASE64',
+    'GREATEST',
+    'HASH',
+    'HYPOT',
+    'IP_PREFIX',
+    'LEAST',
+    'LEFT',
+    'LENGTH',
+    'LOCATE',
+    'LOG',
+    'LOG10',
+    'LTRIM',
+    'MATCH',
+    'MAX',
+    'MEDIAN_ABSOLUTE_DEVIATION',
+    'MEDIAN',
+    'MIN',
+    'MV_APPEND',
+    'MV_AVG',
+    'MV_CONCAT',
+    'MV_COUNT',
+    'MV_DEDUPE',
+    'MV_FIRST',
+    'MV_LAST',
+    'MV_MAX',
+    'MV_MEDIAN_ABSOLUTE_DEVIATION',
+    'MV_MEDIAN',
+    'MV_MIN',
+    'MV_PERCENTILE',
+    'MV_PSERIES_WEIGHTED_SUM',
+    'MV_SLICE',
+    'MV_SORT',
+    'MV_SUM',
+    'MV_ZIP',
+    'NOW',
+    'PERCENTILE',
+    'PI',
+    'POW',
+    'QSTR',
+    'REPEAT',
+    'REPLACE',
+    'REVERSE',
+    'RIGHT',
+    'ROUND',
+    'RTRIM',
+    'SIGNUM',
+    'SIN',
+    'SINH',
+    'SPACE',
+    'SPLIT',
+    'SQRT',
+    'ST_CENTROID_AGG',
+    'ST_CONTAINS',
+    'ST_DISJOINT',
+    'ST_DISTANCE',
+    'ST_ENVELOPE',
+    'ST_EXTENT_AGG',
+    'ST_INTERSECTS',
+    'ST_WITHIN',
+    'ST_X',
+    'ST_XMAX',
+    'ST_XMIN',
+    'ST_Y',
+    'ST_YMAX',
+    'ST_YMIN',
+    'STARTS_WITH',
+    'STD_DEV',
+    'SUBSTRING',
+    'SUM',
+    'TAN',
+    'TANH',
+    'TAU',
+    'TO_BASE64',
+    'TO_BOOLEAN',
+    'TO_CARTESIANPOINT',
+    'TO_CARTESIANSHAPE',
+    'TO_DATE_NANOS',
+    'TO_DATEPERIOD',
+    'TO_DATETIME',
+    'TO_DEGREES',
+    'TO_DOUBLE',
+    'TO_GEOPOINT',
+    'TO_GEOSHAPE',
+    'TO_INTEGER',
+    'TO_IP',
+    'TO_LONG',
+    'TO_LOWER',
+    'TO_RADIANS',
+    'TO_STRING',
+    'TO_TIMEDURATION',
+    'TO_UNSIGNED_LONG',
+    'TO_UPPER',
+    'TO_VERSION',
+    'TOP',
+    'TRIM',
+    'VALUES',
+    'WEIGHTED_AVG',
   ];
 
   const FUNCTION_CALL = {
     className: 'function',
-    begin: concat(/\b/, either(...FUNCTIONS), /\s*\(/),
+    begin: concat(/\b/, either(...functions), /\s*\(/),
     keywords: {
-      keyword: FUNCTIONS
+      keyword: functions
     }
   };
 
@@ -103,16 +217,23 @@ export default function(hljs) {
     keywords: {
       $pattern: /\b[\w\.]+\b/,
       keyword: [
+        ...keywords,
         ...commands,
       ],
-      built_in: BUILT_IN,
-      literal: LITERALS
+      built_in: [
+        ...binaryNamedOperators,
+        ...otherNamedOperators,
+      ],
+      literal: literals
     },
     contains: [
-      hljs.NUMBER_MODE,
+      hljs.C_BLOCK_COMMENT_MODE,
+      hljs.C_LINE_COMMENT_MODE,
+      hljs.QUOTE_STRING_MODE,
+      hljs.C_NUMBER_MODE,
       OPERATOR,
       FUNCTION_CALL,
-      QUOTE_STRING
+      STRING
     ],
     illegal: /[{}]|<\//
   };
