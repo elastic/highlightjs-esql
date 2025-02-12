@@ -1,0 +1,46 @@
+{
+  "name": "highlightjs-esql",
+  "version": "0.0.1",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Highlight.js language syntax definitions for ES|QL",
+  "main": "src/languages/esql.js",,
+  "files": [
+    "LICENSE",
+    "dist/",
+    "src/",
+    "lib/"
+  ],
+  "scripts": {
+    "test": "echo \"no tests...\"",
+    "format": "biome format ./src",
+    "format:fix": "biome format --write ./src",
+    "lint": "biome lint ./src",
+    "lint:fix": "biome lint --apply ./src",
+    "clean": "npx rimraf@5.0.5 lib dist"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elastic/highlightjs-esql.git"
+  },
+  "keywords": [
+    "esql",
+    "es|ql",
+    "elastic",
+    "search processing language",
+    "eql",
+    "highlight.js",
+    "highlightjs",
+    "syntax"
+  ],
+  "bugs": {
+    "url": "https://github.com/elastic/highlightjs-esql/issues"
+  },
+  "homepage": "https://github.com/elastic/highlightjs-esql",
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4"
+  }
+}
