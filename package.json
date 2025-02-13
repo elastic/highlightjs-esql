@@ -6,7 +6,7 @@
     "access": "public"
   },
   "description": "Highlight.js language syntax definitions for ES|QL",
-  "main": "src/languages/esql.js",,
+  "main": "src/languages/esql.js",
   "files": [
     "LICENSE",
     "dist/",
