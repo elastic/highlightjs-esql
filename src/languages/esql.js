@@ -208,6 +208,18 @@ export default function(hljs) {
     }
   };
 
+  const MULTILINE_COMMENT = hljs.COMMENT(
+    '/\\*', // begin
+    '\\*/', // end
+    {
+      contains: [
+        {
+          scope: 'property', begin: '@\\w+'
+        }
+      ]
+    }
+  );
+
   return {
     name: 'esql',
     aliases: [
@@ -227,6 +239,7 @@ export default function(hljs) {
       literal: literals
     },
     contains: [
+      MULTILINE_COMMENT,
       hljs.C_BLOCK_COMMENT_MODE,
       hljs.C_LINE_COMMENT_MODE,
       hljs.QUOTE_STRING_MODE,
