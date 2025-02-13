@@ -7,7 +7,7 @@ EXPLAIN [ FROM index ]
   | SHOW INFO
   | METRICS index_pattern, logs-* BY date, ip
   | EVAL kb = bytes / 1024 * -1.23e456 + ?param, foo = "bar"
-  | WHERE process.name == "curl.exe" AND ?asdf == 123
+  | WHERE process.name == "curl.exe" AND ?42 == 123 OR ?
   | WHERE event_duration > /* very big number */ 5000000
   | WHERE message LIKE "Connected*"
   | KEEP kb, destination.address, date, ip, email, num
@@ -23,12 +23,15 @@ EXPLAIN [ FROM index ]
   /**
    * Description
    * @description This is a description
+   * @color #0077ff
    */
   | DISSECT field """%{date} - %{msg} - %{ip}"""
   | GROK dns.question.name "%{DATA}\\.%{GREEDYDATA:dns.question:string}"
   | ENRICH languages_policy ON a WITH name = language_name, more
   | MV_EXPAND column
-  | INLINESTATS count = COUNT(emp_no) BY languages
+  | INLINESTATS count = COUNT(ROUND(AVG(
+      MV_AVG(department.salary_change)), 10))
+    BY languages
   | LOOKUP index-pa* ON another_index
   | JOIN join_index ON join_index.field = index.field
   | LEFT JOIN join_index ON TRUE
