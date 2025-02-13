@@ -58,15 +58,6 @@ ONLY_EXTRA=true npm run test-markup
 
 ## Releasing
 
-Run test and build steps:
-
-```
-yarn test
-yarn format
-yarn lint
-yarn build
-```
-
 Publish with `release-it` tool:
 
 ```
