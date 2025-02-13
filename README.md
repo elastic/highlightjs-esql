@@ -2,6 +2,8 @@
 
 This package contains the ES|QL grammar for Highlight.js.
 
+![ES|QL sample highlighted query](https://github.com/user-attachments/assets/1331f854-2615-45e3-9a92-f90a230d95b7)
+
 Usage:
 
 ```javascript
