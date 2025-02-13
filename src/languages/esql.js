@@ -208,17 +208,22 @@ export default function(hljs) {
     }
   };
 
-  const MULTILINE_COMMENT = hljs.COMMENT(
+  const DOCTAGS = hljs.COMMENT(
     '/\\*', // begin
     '\\*/', // end
     {
       contains: [
         {
-          scope: 'property', begin: '@\\w+'
+          scope: 'doctag', begin: '@\\w+'
         }
       ]
     }
   );
+
+  const PARAM = {
+    className: 'variable',
+    begin: '\\?(\\w+)?',
+  };
 
   return {
     name: 'esql',
@@ -239,11 +244,12 @@ export default function(hljs) {
       literal: literals
     },
     contains: [
-      MULTILINE_COMMENT,
+      DOCTAGS,
       hljs.C_BLOCK_COMMENT_MODE,
       hljs.C_LINE_COMMENT_MODE,
       hljs.QUOTE_STRING_MODE,
       hljs.C_NUMBER_MODE,
+      PARAM,
       OPERATOR,
       FUNCTION_CALL,
       STRING
