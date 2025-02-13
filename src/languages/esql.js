@@ -225,6 +225,11 @@ export default function(hljs) {
     begin: '\\?(\\w+)?',
   };
 
+  const CAST = {
+    className: 'type',
+    begin: '::\\w+',
+  };
+
   return {
     name: 'esql',
     aliases: [
@@ -249,10 +254,11 @@ export default function(hljs) {
       hljs.C_LINE_COMMENT_MODE,
       hljs.QUOTE_STRING_MODE,
       hljs.C_NUMBER_MODE,
-      PARAM,
       OPERATOR,
       FUNCTION_CALL,
-      STRING
+      STRING,
+      PARAM,
+      CAST,
     ],
     illegal: /[{}]|<\//
   };
