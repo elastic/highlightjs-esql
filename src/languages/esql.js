@@ -60,7 +60,7 @@ export default function(hljs) {
 
   const OPERATOR = {
     className: "operator",
-    match: /\|/
+    match: /\|\+\-%\*\//
   };
 
   const STRING = {
@@ -229,6 +229,11 @@ export default function(hljs) {
     begin: '::\\w+',
   };
 
+  const PUNCTUATION = {
+    scope: "punctuation",
+    match: /[,;{}\[\]\(\)]/
+  };
+
   return {
     name: 'esql',
     aliases: [
@@ -258,6 +263,7 @@ export default function(hljs) {
       STRING,
       PARAM,
       CAST,
+      PUNCTUATION,
     ],
     illegal: /[{}]|<\//
   };
