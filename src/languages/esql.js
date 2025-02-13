@@ -5,27 +5,26 @@ Website: https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.ht
 Category: enterprise
 */
 
-function source(re) {
+const source = (re) => {
   if (!re) return null;
   if (typeof re === "string") return re;
-
   return re.source;
-}
+};
 
-function concat(...args) {
+const concat = (...args) => {
   const joined = args.map((x) => source(x)).join("");
   return joined;
-}
+};
 
-function either(...args) {
+const either = (...args) => {
   const joined = '(' + args.map((x) => source(x)).join("|") + ")";
   return joined;
-}
+};
 
 export default function(hljs) {
   const literals = ['TRUE', 'FALSE', 'NULL'];
-  const binaryNamedOperators = ['AND', 'OR', 'IS', 'IN', 'AS', 'LIKE', 'RLIKE', 'RLIKE'];
-  const otherNamedOperators = ['ASC', 'DESC', 'FIRST', 'LAST', 'NULLS'];
+  const binaryNamedOperators = ['AND', 'OR', 'IS', 'IN', 'AS', 'LIKE', 'RLIKE'];
+  const otherNamedOperators = ['ASC', 'DESC', 'FIRST', 'LAST', 'NULLS', 'NOT'];
   
   const keywords = ['BY', 'ON', 'WITH', 'METADATA'];
   const commands = [
