@@ -1,5 +1,5 @@
 {
-  "name": "highlightjs-esql",
+  "name": "@elastic/highlightjs-esql",
   "version": "1.0.0",
   "private": false,
   "publishConfig": {
