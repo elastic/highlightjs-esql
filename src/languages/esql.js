@@ -33,6 +33,7 @@ export default function(hljs) {
     'ENRICH',
     'EVAL',
     'EXPLAIN',
+    'FORK',
     'FROM',
     'FULL JOIN',
     'GROK',
