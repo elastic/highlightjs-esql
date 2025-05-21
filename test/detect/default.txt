@@ -7,6 +7,7 @@ EXPLAIN [ FROM index ]
   | SHOW INFO
   | FORK (WHERE "adsf" | LIMIT 123) (LIMIT 123)
     (WHERE asdf = ?asdf | LIMIT 123)
+  | RRF
   | METRICS index_pattern, logs-* BY date, ip
   | EVAL kb = bytes / 1024 * -1.23e456 + ?param, foo = "bar"
   | WHERE process.name == "curl.exe" AND ?42 == 123 OR ?
