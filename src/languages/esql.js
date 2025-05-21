@@ -52,6 +52,7 @@ export default function(hljs) {
     'RIGHT JOIN',
     'RIGHT',
     'ROW',
+    'RRF',
     'SHOW INFO',
     'SHOW',
     'SORT',
