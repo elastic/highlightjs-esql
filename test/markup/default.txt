@@ -40,3 +40,4 @@ EXPLAIN [ FROM index ]
   | LEFT JOIN join_index ON TRUE
   | RIGHT JOIN join_index ON field1, field2, field3
   | LOOKUP JOIN join_index AS x ON x.foo = bar
+  | COMPLETION "prompt" WITH `openai-completion` AS result
