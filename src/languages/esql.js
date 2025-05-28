@@ -53,6 +53,7 @@ export default function(hljs) {
     'RIGHT',
     'ROW',
     'RRF',
+    'SAMPLE',
     'SHOW INFO',
     'SHOW',
     'SORT',
