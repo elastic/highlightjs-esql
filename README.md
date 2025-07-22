@@ -8,7 +8,7 @@ Usage:
 
 ```javascript
 const hljs = require('highlight.js');
-const esql = require('highlightjs-eslq');
+const esql = require('@elastic/highlightjs-esql');
 
 hljs.registerLanguage('esql', esql);
 ```
