@@ -28,6 +28,7 @@ export default function(hljs) {
   
   const keywords = ['BY', 'ON', 'WITH', 'METADATA'];
   const commands = [
+    'COMPLETION',
     'DISSECT',
     'DROP',
     'ENRICH',
