@@ -41,6 +41,6 @@
   },
   "homepage": "https://github.com/elastic/highlightjs-esql",
   "devDependencies": {
-    "@biomejs/biome": "2.1.4"
+    "@biomejs/biome": "2.2.0"
   }
 }
