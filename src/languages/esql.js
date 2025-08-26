@@ -49,6 +49,7 @@ export default function(hljs) {
     'METRICS',
     'MV_EXPAND',
     'RENAME',
+    'RERANK',
     'RIGHT JOIN',
     'RIGHT',
     'ROW',
