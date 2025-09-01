@@ -25,7 +25,7 @@ export default function(hljs) {
   const literals = ['TRUE', 'FALSE', 'NULL'];
   const binaryNamedOperators = ['AND', 'OR', 'IS', 'IN', 'AS', 'LIKE', 'RLIKE'];
   const otherNamedOperators = ['ASC', 'DESC', 'FIRST', 'LAST', 'NULLS', 'NOT'];
-  
+
   const keywords = ['BY', 'ON', 'WITH', 'METADATA'];
   const commands = [
     'DISSECT',
@@ -59,19 +59,19 @@ export default function(hljs) {
     'SHOW',
     'SORT',
     'STATS',
-    'WHERE',
+    'WHERE'
   ];
 
   const OPERATOR = {
     className: "operator",
-    match: /\|\+\-%\*\//
+    match: /[|+\-%*/]/
   };
 
   const STRING = {
     className: 'string',
     begin: /"/,
     end: /"/,
-    contains: [ hljs.BACKSLASH_ESCAPE ]
+    contains: [hljs.BACKSLASH_ESCAPE]
   };
 
   const functions = [
@@ -200,7 +200,7 @@ export default function(hljs) {
     'TOP',
     'TRIM',
     'VALUES',
-    'WEIGHTED_AVG',
+    'WEIGHTED_AVG'
   ];
 
   const FUNCTION_CALL = {
@@ -225,34 +225,48 @@ export default function(hljs) {
 
   const PARAM = {
     className: 'variable',
-    begin: '\\?(\\w+)?',
+    begin: '\\?(\\w+)?'
   };
 
   const CAST = {
     className: 'type',
-    begin: '::\\w+',
+    begin: '::\\w+'
+  };
+
+  // Custom number mode that doesn't match numbers within identifiers
+  const NUMBER = {
+    className: 'number',
+    variants: [
+      // Scientific notation
+      { match: /-?\b\d+(\.\d+)?[eE][+-]?\d+\b/ },
+      // Decimal numbers
+      { match: /-?\b\d+\.\d+\b/ },
+      // Integer numbers (with word boundary but not after colon or dash)
+      { match: /\b\d+\b/, excludeBegin: /[:_-]/ }
+    ],
+    relevance: 0
   };
 
   const PUNCTUATION = {
     scope: "punctuation",
-    match: /[,;{}\[\]\(\)]/
+    match: /[,;{}[\]()]/
   };
 
   return {
     name: 'esql',
     aliases: [
-      'es|ql',
+      'es|ql'
     ],
     case_insensitive: true,
     keywords: {
-      $pattern: /\b[\w\.]+\b/,
+      $pattern: /\b[\w.]+\b/,
       keyword: [
         ...keywords,
-        ...commands,
+        ...commands
       ],
       built_in: [
         ...binaryNamedOperators,
-        ...otherNamedOperators,
+        ...otherNamedOperators
       ],
       literal: literals
     },
@@ -261,13 +275,13 @@ export default function(hljs) {
       hljs.C_BLOCK_COMMENT_MODE,
       hljs.C_LINE_COMMENT_MODE,
       hljs.QUOTE_STRING_MODE,
-      hljs.C_NUMBER_MODE,
+      NUMBER,
       OPERATOR,
       FUNCTION_CALL,
       STRING,
       PARAM,
       CAST,
-      PUNCTUATION,
+      PUNCTUATION
     ],
     illegal: /[{}]|<\//
   };
