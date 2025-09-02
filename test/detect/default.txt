@@ -22,6 +22,7 @@ EXPLAIN [ FROM index ]
   | SORT @timestamp DESC
   | SORT kb, date ASC NULLS FIRST, ip DESC NULLS LAST
   | DROP date, ip
+  | TS
   | RENAME field AS another_field, another_field AS field
   | RENAME unique_queries AS `Unique Queries`
   /**
@@ -38,6 +39,7 @@ EXPLAIN [ FROM index ]
     BY languages
   | LOOKUP index-pa* ON another_index
   | JOIN join_index ON join_index.field = index.field
+  | COMPLETION "prompt" WITH `openai-completion` AS result
   | LEFT JOIN join_index ON TRUE
   | RIGHT JOIN join_index ON field1, field2, field3
   | LOOKUP JOIN join_index AS x ON x.foo = bar

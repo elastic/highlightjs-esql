@@ -28,6 +28,8 @@ export default function(hljs) {
   
   const keywords = ['BY', 'ON', 'WITH', 'METADATA'];
   const commands = [
+    'CHANGE_POINT',
+    'COMPLETION',
     'DISSECT',
     'DROP',
     'ENRICH',
@@ -36,6 +38,7 @@ export default function(hljs) {
     'FORK',
     'FROM',
     'FULL JOIN',
+    'FUSE',
     'GROK',
     'INFO',
     'INLINESTATS',
@@ -59,6 +62,7 @@ export default function(hljs) {
     'SHOW',
     'SORT',
     'STATS',
+    'TS',
     'WHERE',
   ];
 
