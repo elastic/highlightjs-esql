@@ -25,8 +25,8 @@ export default function(hljs) {
   const literals = ['TRUE', 'FALSE', 'NULL'];
   const binaryNamedOperators = ['AND', 'OR', 'IS', 'IN', 'AS', 'LIKE', 'RLIKE'];
   const otherNamedOperators = ['ASC', 'DESC', 'FIRST', 'LAST', 'NULLS', 'NOT'];
-  
-  const keywords = ['BY', 'ON', 'WITH', 'METADATA'];
+
+  const keywords = ['BY', 'ON', 'WITH', 'METADATA', 'SCORE', 'KEY', 'GROUP'];
   const commands = [
     'CHANGE_POINT',
     'COMPLETION',
@@ -56,7 +56,6 @@ export default function(hljs) {
     'RIGHT JOIN',
     'RIGHT',
     'ROW',
-    'RRF',
     'SAMPLE',
     'SHOW INFO',
     'SHOW',
