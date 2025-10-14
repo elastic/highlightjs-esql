@@ -55,10 +55,12 @@ jobs:
           cd highlight.js
           node ./tools/build.js -t node
           node ./tools/build.js -t cdn
-          # Copy built files from highlightjs-esql/dist to root dist folder
+          # Copy built files from extra/highlightjs-esql/dist to root dist folder
           cd ..
           mkdir -p dist
           cp -r highlight.js/extra/highlightjs-esql/dist/* dist/
+          git add dist
+          git commit -m "(chore) add distributable"
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
