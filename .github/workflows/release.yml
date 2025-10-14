@@ -52,6 +52,7 @@ jobs:
           npm i
       - name: Build
         run: |
+          cd highlight.js
           node ./tools/build.js -t node
           node ./tools/build.js -t cdn
       - name: Release
