@@ -56,24 +56,7 @@ npm run test
 
 ## Releasing
 
-Run build script:
-
-```
-npm i
-node ./tools/build.js -t node
-```
-
-Run CDN build:
-
-```
-node ./tools/build.js -t cdn
-```
-
-Publish with `release-it` tool:
-
-```
-npx release-it
-```
+To release a new version add a publish label to the PR. Or you can run the Release Github action manually from Github web.
 
 
 ## License

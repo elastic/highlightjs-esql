@@ -1,9 +1,10 @@
 {
   "name": "@elastic/highlightjs-esql",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": false,
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   },
   "description": "Highlight.js language syntax definitions for ES|QL",
   "main": "src/languages/esql.js",
@@ -19,7 +20,8 @@
     "format:fix": "biome format --write ./src",
     "lint": "biome lint ./src",
     "lint:fix": "biome lint --apply ./src",
-    "clean": "npx rimraf@5.0.5 lib dist"
+    "clean": "npx rimraf@5.0.5 lib dist",
+    "release": "npx release-it --ci"
   },
   "license": "MIT",
   "repository": {
