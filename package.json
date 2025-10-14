@@ -21,7 +21,7 @@
     "lint": "biome lint ./src",
     "lint:fix": "biome lint --apply ./src",
     "clean": "npx rimraf@5.0.5 lib dist",
-    "release": "npx release-it"
+    "release": "npx release-it --ci"
   },
   "license": "MIT",
   "repository": {
