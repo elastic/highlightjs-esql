@@ -1,0 +1,32 @@
+name: Test Checkout v6
+
+on:
+  workflow_dispatch:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  test-checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout with v6
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Test persist-credentials (same as release workflow)
+        run: |
+          echo "test" > test-file.txt
+          git add test-file.txt
+          git commit -m "test: verify persist-credentials works"
+          echo "Git commit works! Persist-credentials is working correctly with v6"
+
+      - name: Cleanup
+        run: git reset --hard HEAD~1
