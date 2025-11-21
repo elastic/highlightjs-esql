@@ -26,7 +26,12 @@ jobs:
           echo "test" > test-file.txt
           git add test-file.txt
           git commit -m "test: verify persist-credentials works"
-          echo "Git commit works! Persist-credentials is working correctly with v6"
+          echo "Git commit works"
+
+      - name: Test git push (verify credentials work for push)
+        run: |
+          git push --dry-run
+          echo "Git push credentials work"
 
       - name: Cleanup
         run: git reset --hard HEAD~1
