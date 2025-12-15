@@ -56,7 +56,7 @@ npm run test
 
 ## Releasing
 
-To release a new version add a publish label to the PR. Or you can run the Release Github action manually from Github web.
+To release a new version add a publish label to the PR.
 
 
 ## License

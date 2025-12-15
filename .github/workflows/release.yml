@@ -59,7 +59,7 @@ jobs:
           mkdir -p dist
           cp -r highlight.js/extra/highlightjs-esql/dist/* dist/
           git add dist
-          git commit -m "(chore) add distributable"
+          git diff --staged --quiet || git commit -m "(chore) add distributable"
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
