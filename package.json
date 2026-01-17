@@ -45,7 +45,7 @@
   },
   "homepage": "https://github.com/elastic/highlightjs-esql",
   "devDependencies": {
-    "@biomejs/biome": "2.3.10",
+    "@biomejs/biome": "2.3.11",
     "@babel/core": "7.28.5",
     "@babel/eslint-parser": "7.28.5",
     "@eslint/js": "9.39.2",
