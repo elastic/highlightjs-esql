@@ -1,4 +1,4 @@
-import babelEslint from '@babel/eslint-parser';
+import { parse } from '@babel/parser';
 
 export const requireLicenseHeader = {
   meta: {
@@ -24,8 +24,11 @@ export const requireLicenseHeader = {
 
           assert(!!license, '"license" option is required');
 
-          const parsed = babelEslint.parse(license, { requireConfigFile: false });
-          assert(!parsed.body.length, '"license" option must only include a single comment');
+          const parsed = parse(license);
+          assert(
+            !parsed.program.body.length,
+            '"license" option must only include a single comment'
+          );
           assert(
             parsed.comments.length === 1,
             '"license" option must only include a single comment'
