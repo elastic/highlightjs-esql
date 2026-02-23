@@ -24,6 +24,7 @@ export const requireLicenseHeader = {
 
           assert(!!license, '"license" option is required');
 
+          // TODO: switch back to @babel/eslint-parser when its peer range aligns with ESLint 10.
           const parsed = parse(license);
           assert(
             !parsed.program.body.length,
