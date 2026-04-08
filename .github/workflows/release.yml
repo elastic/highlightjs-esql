@@ -24,7 +24,6 @@ jobs:
       - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
         with:
           node-version: '24'
-          registry-url: 'https://registry.npmjs.org'
 
       - run: yarn install --frozen-lockfile
       - run: yarn lint
@@ -70,4 +69,3 @@ jobs:
         run: npx semantic-release --debug
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

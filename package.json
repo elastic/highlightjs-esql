@@ -3,8 +3,7 @@
   "version": "1.2.1",
   "private": false,
   "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org"
+    "access": "public"
   },
   "description": "Highlight.js language syntax definitions for ES|QL",
   "main": "src/languages/esql.js",
