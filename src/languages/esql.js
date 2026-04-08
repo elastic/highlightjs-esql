@@ -328,7 +328,7 @@ export default function (hljs) {
 		"NOT_EQUALS",
 		"RLIKE",
 		"SUB",
-		];
+	];
 
 	const FUNCTION_CALL = {
 		className: "function",
