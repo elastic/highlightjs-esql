@@ -46,7 +46,7 @@
   "devDependencies": {
     "@babel/core": "7.29.0",
     "@babel/parser": "7.29.2",
-    "@biomejs/biome": "2.4.8",
+    "@biomejs/biome": "2.4.9",
     "@eslint/js": "10.0.1",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/commit-analyzer": "13.0.1",
