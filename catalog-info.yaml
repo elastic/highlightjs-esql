@@ -5,7 +5,10 @@ apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
   name: buildkite-pipeline-highlightjs-esql
-  description: Buildkite Pipeline for highlightjs-esql
+  description: >
+    Buildkite Pipeline for highlightjs-esql.
+    DEPRECATED: this repository has moved to elastic/esql-js
+    (packages/highlightjs-esql).
   links:
     - title: Pipeline
       url: https://buildkite.com/elastic/highlightjs-esql

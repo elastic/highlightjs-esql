@@ -13,59 +13,13 @@ permissions:
   contents: read
 
 jobs:
-  build-and-test:
-    name: Build & Test
+  disabled:
+    name: Release disabled - repository moved
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-        with:
-          ref: ${{ inputs.branch }}
-
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
-        with:
-          node-version: '24'
-
-      - run: yarn install --frozen-lockfile
-      - run: yarn lint
-      - run: yarn format
-
-  release:
-    name: Release
-    needs: build-and-test
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
-      id-token: write
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-        with:
-          ref: ${{ inputs.branch }}
-          fetch-depth: 0
-          persist-credentials: false
-
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
-        with:
-          node-version: '24'
-          registry-url: 'https://registry.npmjs.org'
-
-      - run: yarn install --frozen-lockfile
-
-      - name: Build
+      - name: Fail with pointer to new location
         run: |
-          git clone https://github.com/highlightjs/highlight.js.git
-          cd highlight.js/extra
-          git clone https://github.com/elastic/highlightjs-esql.git
-          cd ..
-          yarn install
-          node ./tools/build.js -t node
-          node ./tools/build.js -t cdn
-          cd ..
-          mkdir -p dist
-          cp -r highlight.js/extra/highlightjs-esql/dist/* dist/
-
-      - name: Release
-        run: npx semantic-release --debug
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          echo "::error::This repository has moved to elastic/esql-js (packages/highlightjs-esql)."
+          echo "::error::Releases are now published from that monorepo. This workflow is disabled to prevent accidental npm publishes from the old repo."
+          echo "::error::See https://github.com/elastic/esql-js/tree/main/packages/highlightjs-esql"
+          exit 1
