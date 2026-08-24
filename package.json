@@ -5,7 +5,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "description": "Highlight.js language syntax definitions for ES|QL",
+  "description": "DEPRECATED: moved to the elastic/esql-js monorepo (packages/highlightjs-esql). Highlight.js language syntax definitions for ES|QL",
   "main": "src/languages/esql.js",
   "files": [
     "NOTICE.txt",

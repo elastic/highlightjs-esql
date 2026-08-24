@@ -1,5 +1,11 @@
 # Contributing to Highlight.js ES|QL
 
+> [!IMPORTANT]
+> This repository has moved to the
+> [`elastic/esql-js`](https://github.com/elastic/esql-js) monorepo, under
+> [`packages/highlightjs-esql`](https://github.com/elastic/esql-js/tree/main/packages/highlightjs-esql).
+> Please direct all contributions there; the guidance below no longer applies.
+
 First clone the main Highlight.js repository:
 
 ```
